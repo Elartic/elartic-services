@@ -1,6 +1,7 @@
 # elartic-services
 
-I'll be hosting multiple services using docker and docker compose, here is my configuration.
+I'll be hosting multiple services using docker and docker compose, here is my configuration.  
+Most of the code I have here comes from the documentation link to Nextcloud, Nginx and nginx-proxy.
 
 ## What I plan to do
 
