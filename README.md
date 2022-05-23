@@ -15,3 +15,12 @@ For now I must have a Nextcloud to sync all my important files between my device
 * [nginx:alpine](https://hub.docker.com/_/nginx)
 * [ngninx-proxy:alpine](https://github.com/nginx-proxy/nginx-proxy)
 * [acme-companion](https://github.com/nginx-proxy/acme-companion)
+
+## `db.env` file
+
+```
+MYSQL_ROOT_PASSWORD=
+MYSQL_PASSWORD=
+MYSQL_DATABASE=
+MYSQL_USER=
+```
