@@ -35,9 +35,9 @@ services:
       - ./nextcloud:/var/www/html:ro
       - ./conf/nextcloud.conf:/etc/nginx/nginx.conf
     environment:
-      - VIRTUAL_HOST=nextcloud.hugotorres.me
-      - LETSENCRYPT_HOST=nextcloud.hugotorres.me
-      - LETSENCRYPT_EMAIL=hugotorres.elartic@gmail.com
+      - VIRTUAL_HOST=
+      - LETSENCRYPT_HOST=
+      - LETSENCRYPT_EMAIL=
     depends_on:
       - app
     networks:
