@@ -2,7 +2,7 @@ version: "3.8"
 
 services:
   db:
-    image: mariadb:10.5
+    image: mariadb
     command: --transaction-isolation=READ-COMMITTED --binlog-format=ROW
     restart: always
     volumes:
@@ -48,7 +48,7 @@ services:
     image: nextcloud:fpm-alpine
     restart: always
     volumes:
-      - ./nextcloud:/var/www/html
+      - nextcloud:/var/www/html
     entrypoint: /cron.sh
     depends_on:
       - db
