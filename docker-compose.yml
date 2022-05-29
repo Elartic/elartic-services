@@ -6,7 +6,7 @@ services:
     command: --transaction-isolation=READ-COMMITTED --binlog-format=ROW
     restart: always
     volumes:
-      - ./db:/var/lib/mysql
+      - db:/var/lib/mysql
     env_file:
       - db.env
   
@@ -18,7 +18,7 @@ services:
     image: nextcloud:fpm-alpine
     restart: always
     volumes:
-      - ./nextcloud:/var/www/html
+      - nextcloud:/var/www/html
     environment:
       - MYSQL_HOST=db
       - REDIS_HOST=redis
@@ -32,7 +32,7 @@ services:
     image: nginx:alpine
     restart: always
     volumes:
-      - ./nextcloud:/var/www/html:ro
+      - nextcloud:/var/www/html:ro
       - ./conf/nextcloud.conf:/etc/nginx/nginx.conf
     environment:
       - VIRTUAL_HOST=
@@ -63,10 +63,10 @@ services:
     labels:
       com.github.jrcs.letsencrypt_nginx_proxy_companion.nginx_proxy: "true"
     volumes:
-      - ./certs:/etc/nginx/certs
-      - ./acme:/etc/acme.sh
-      - ./vhost.d:/etc/nginx/vhost.d
-      - ./html:/usr/share/nginx/html
+      - certs:/etc/nginx/certs
+      - acme:/etc/acme.sh
+      - vhost.d:/etc/nginx/vhost.d
+      - html:/usr/share/nginx/html
       - ./conf/uploadsize.conf:/etc/nginx/conf.d/uploadsize.conf
       - /var/run/docker.sock:/tmp/docker.sock:ro
     networks:
@@ -76,10 +76,10 @@ services:
     image: nginxproxy/acme-companion
     restart: always
     volumes:
-      - ./certs:/etc/nginx/certs
-      - ./acme:/etc/acme.sh
-      - ./vhost.d:/etc/nginx/vhost.d
-      - ./html:/usr/share/nginx/html
+      - certs:/etc/nginx/certs
+      - acme:/etc/acme.sh
+      - vhost.d:/etc/nginx/vhost.d
+      - html:/usr/share/nginx/html
       - /var/run/docker.sock:/var/run/docker.sock:ro
     networks:
       - proxy-tier
